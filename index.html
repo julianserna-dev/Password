@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitación IA - Password Consulting</title>
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <!-- Tema oscuro modificado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css" id="theme">
+    
+    <!-- Google Fonts para tipografía premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Personalización Password Consulting */
+        :root {
+            --primary-blue: #0A192F;
+            --cyan: #64FFDA;
+            --text-color: #E6F1FF;
+            --danger: #FF4D4D;
+        }
+        
+        .reveal {
+            font-size: 28px;
+        }
+        
+        .reveal h1 { font-size: 2em; margin-bottom: 0.2em; }
+        .reveal h2 { font-size: 1.5em; margin-bottom: 0.5em; }
+        .reveal h3 { font-size: 1.1em; }
+        .reveal h4 { font-size: 0.9em; }
+        
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            color: var(--cyan);
+            text-transform: none;
+            font-family: 'Outfit', 'Segoe UI', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 600;
+        }
+
+        /* --- Animaciones Premium --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes glowText {
+            0% { text-shadow: 0 0 10px rgba(100, 255, 218, 0.1); }
+            50% { text-shadow: 0 0 25px rgba(100, 255, 218, 0.4), 0 0 35px rgba(100, 255, 218, 0.2); }
+            100% { text-shadow: 0 0 10px rgba(100, 255, 218, 0.1); }
+        }
+
+        .main-title {
+            font-size: 2.2em !important;
+            background: linear-gradient(90deg, #ffffff, #64FFDA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glowText 3s infinite alternate;
+            font-weight: 800 !important;
+            letter-spacing: -1px;
+        }
+
+        .subtitle-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(100, 255, 218, 0.08);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 50px;
+            font-size: 0.85em;
+            color: var(--cyan);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-float {
+            animation: float 5s ease-in-out infinite;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+        }
+
+        .glass-box {
+            background: rgba(10, 25, 47, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        /* --------------------------- */
+        
+        .reveal .slide-background {
+            background-color: var(--primary-blue);
+        }
+        
+        .highlight-text {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        .danger-text {
+            color: var(--danger);
+            font-weight: bold;
+        }
+        .success-text {
+            color: #4dff4d;
+            font-weight: bold;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .col {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .reveal ul, .reveal ol {
+            font-size: 0.85em;
+            line-height: 1.5;
+            text-align: left;
+            display: block;
+            margin-left: 1.5em;
+        }
+        
+        .reveal li {
+            margin-bottom: 15px;
+        }
+        
+        .box {
+            background: rgba(10, 25, 47, 0.9);
+            border-left: 5px solid var(--cyan);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 0.8em;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Solución para que el logo se vea estético y proporcional */
+        .logo-img {
+            max-width: 300px !important;
+            height: auto !important;
+            margin: 0 auto 20px auto !important;
+            display: block !important;
+        }
+        
+        .bg-overlay {
+            background-color: rgba(10, 25, 47, 0.88);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .prompt-code {
+            background: #112240;
+            color: #64FFDA;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85em;
+            text-align: left;
+            margin-top: 15px;
+            border-left: 4px solid #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Diapositiva 1: Título -->
+            <section data-transition="zoom" data-background-image="assets/ai_brain_neural_1784010556674.png" data-background-opacity="0.1">
+                <div class="glass-box">
+                    <img src="https://password.co/wp-content/uploads/2026/03/Logos-PW-blanco-300x119-1.png" class="logo-img logo-float" alt="Password Consulting Logo">
+                    
+                    <h1 class="main-title" style="margin-top: 10px;">Password Consulting</h1>
+                    
+                    <div class="subtitle-badge fragment fade-up">Inteligencia Artificial</div>
+                    <h3 class="fragment fade-up" style="color: white; font-weight: 300; letter-spacing: 1px;">Eficiencia y Seguridad</h3>
+                    
+                    <br>
+                    <p class="fragment fade-up" style="font-size: 0.8em; max-width: 800px; margin: 0 auto; color: #a8b2d1; line-height: 1.6;">
+                        Cómo integrar la IA en nuestras operaciones diarias sin comprometer la confianza de nuestros clientes.
+                    </p>
+                    
+                    <p class="fragment fade-in" style="font-size: 0.6em; margin-top: 45px; color: var(--cyan); letter-spacing: 2px; font-weight: 600;">
+                        PRESENTADO POR: JULIÁN SERNA
+                    </p>
+                </div>
+            </section>
+
+            <!-- Diapositiva 2: ¿Quién soy? -->
+            <section data-transition="slide">
+                <h2>¿Quién soy y cómo los voy a apoyar?</h2>
+                <div class="container">
+                    <div class="col">
+                        <h4 style="color: white;">Mi Perfil</h4>
+                        <p style="font-size: 0.85em;">Ingeniero encargado de liderar la integración de Inteligencia Artificial en Password Consulting.</p>
+                    </div>
+                    <div class="col fragment">
+                        <h4 style="color: white;">Mi Misión</h4>
+                        <p style="font-size: 0.85em;">No vengo a imponer herramientas difíciles, vengo a facilitarles la vida y eliminar cuellos de botella diarios.</p>
+                    </div>
+                </div>
+                <div class="box fragment">
+                    <strong>¿Qué haremos juntos?</strong>
+                    <ul>
+                        <li>Identificar tareas repetitivas y automatizarlas de forma segura.</li>
+                        <li>Validar las IAs comerciales que ustedes necesiten usar.</li>
+                        <li>Implementar herramientas y ecosistemas locales seguros.</li>
+                    </ul>
+                </div>
+                <p class="fragment" style="color: var(--cyan); font-style: italic; margin-top: 25px; font-size: 0.85em;">"Soy su puente entre la tecnología de IA y el flujo de trabajo diario."</p>
+            </section>
+
+            <!-- Diapositiva 3: Nuestro Núcleo -->
+            <section data-background-image="assets/soc_background_1784009958954.png" data-background-opacity="0.25">
+                <div class="bg-overlay">
+                    <h2>Lo que hacemos: <span class="highlight-text">Nuestro ADN</span></h2>
+                    <p style="font-size: 0.85em; margin-bottom: 30px;">En Password Consulting respiramos Ciberseguridad. Somos el escudo de nuestros clientes.</p>
+                    <ul>
+                        <li class="fragment"><strong>Operaciones SOC (24/7):</strong> Monitoreo activo, triaje de alertas y contención de amenazas en tiempo real.</li>
+                        <li class="fragment"><strong>Consultoría Especializada:</strong> Auditorías, cumplimiento de normativas ISO y Pentesting avanzado.</li>
+                        <li class="fragment"><strong>Respuesta a Incidentes:</strong> Manejo de crisis y recuperación de infraestructura crítica.</li>
+                    </ul>
+                    <div class="box fragment" style="border-left-color: #ffcc00; background: rgba(0,0,0,0.8);">
+                        <strong>La Gran Paradoja:</strong> Protegemos la información más crítica del mercado (vulnerabilidades, infraestructuras, bases de datos). Por ende, internamente debemos tener un <strong>estándar de seguridad superior</strong> al de cualquier otra industria.
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRUPO: Introducción a la IA (3 sub-slides verticales) -->
+            <section>
+
+                <!-- Sub-slide 4A: ¿Qué es la IA? -->
+                <section data-background-image="assets/ai_brain_neural_1784010556674.png" data-background-opacity="0.3">
+                    <div class="bg-overlay">
+                        <h2>¿Qué es la Inteligencia Artificial?</h2>
+                        <p style="font-size: 0.85em; margin-bottom: 30px; color: #ccc;">No es magia. No es ciencia ficción. Es matemática que aprendió a hablar.</p>
+                        <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0; gap: 30px;">
+                            <div class="col fragment" style="background: rgba(0,0,0,0.7); text-align: center;">
+                                <div style="font-size: 2em;">🧠</div>
+                                <h4 style="color: white;">El Cerebro Humano</h4>
+                                <p style="font-size: 0.8em;">Aprende por experiencia, reconoce patrones y toma decisiones.</p>
+                            </div>
+                            <div style="display: flex; align-items: center; font-size: 1.5em; color: var(--cyan); font-weight: bold;" class="fragment">→</div>
+                            <div class="col fragment" style="background: rgba(0,0,0,0.7); text-align: center;">
+                                <div style="font-size: 2em;">🤖</div>
+                                <h4 style="color: white;">La IA</h4>
+                                <p style="font-size: 0.8em;">Hace exactamente lo mismo, pero con miles de millones de datos y en milisegundos.</p>
+                            </div>
+                        </div>
+                        <div class="box fragment" style="background: rgba(0,0,0,0.8); border-left-color: var(--cyan); margin-top: 30px;">
+                            <strong>En la práctica:</strong> Un modelo de IA como Claude o Gemini leyó internet, millones de libros, artículos científicos y código fuente. Luego aprendió a predecir la siguiente palabra más probable en una conversación. Eso es todo. Eso es la IA Generativa.
+                        </div>
+                        <p style="font-size: 0.7em; color: #888; margin-top: 20px;">⬇ Usa la flecha hacia abajo para continuar</p>
+                    </div>
+                </section>
+
+                <!-- Sub-slide 4B: ¿Cómo aprende? - El ciclo -->
+                <section data-background-image="assets/ai_brain_neural_1784010556674.png" data-background-opacity="0.2">
+                    <div class="bg-overlay">
+                        <h2>¿Cómo aprende la IA?</h2>
+                        <p style="font-size: 0.82em; margin-bottom: 20px;">El ciclo de entrenamiento que te convierte en <span style="color:#ffcc00;font-weight:bold;">fuente de datos</span> si no tienes cuidado.</p>
+
+                        <div style="display: flex; justify-content: center; align-items: stretch; gap: 12px; flex-wrap: nowrap;">
+                            <div class="fragment" style="background: rgba(100,255,218,0.08); border: 1px solid var(--cyan); border-radius: 10px; padding: 14px 16px; text-align: center; flex: 1;">
+                                <div style="font-size: 1.6em;">📚</div>
+                                <strong style="font-size:0.9em;">1. Datos de Entrenamiento</strong>
+                                <p style="font-size: 0.78em; margin: 8px 0 0; color: #ccc;">Libros, artículos, código, foros, Wikipedia, redes sociales... y <em>tus conversaciones</em> si la cuenta no es Enterprise.</p>
+                            </div>
+                            <span class="fragment" style="color: var(--cyan); font-size: 1.8em; display:flex; align-items:center; padding: 0 4px;">→</span>
+                            <div class="fragment" style="background: rgba(100,255,218,0.08); border: 1px solid var(--cyan); border-radius: 10px; padding: 14px 16px; text-align: center; flex: 1;">
+                                <div style="font-size: 1.6em;">⚙️</div>
+                                <strong style="font-size:0.9em;">2. El Modelo Aprende</strong>
+                                <p style="font-size: 0.78em; margin: 8px 0 0; color: #ccc;">Ajusta billones de <em>parámetros</em> internos — piensa en ellos como "diales de precisión". Cada ajuste lo hace mejor prediciendo la siguiente palabra.</p>
+                            </div>
+                            <span class="fragment" style="color: var(--cyan); font-size: 1.8em; display:flex; align-items:center; padding: 0 4px;">→</span>
+                            <div class="fragment" style="background: rgba(255,77,77,0.1); border: 1px solid #ff4d4d; border-radius: 10px; padding: 14px 16px; text-align: center; flex: 1;">
+                                <div style="font-size: 1.6em;">💬</div>
+                                <strong style="font-size:0.9em;">3. Tus Prompts</strong>
+                                <p style="font-size: 0.78em; margin: 8px 0 0; color: #ff9999;">En cuentas estándar, lo que escribes hoy puede <em>volver al paso 1</em> como dato de entrenamiento para versiones futuras.</p>
+                            </div>
+                        </div>
+
+                        <div class="box fragment" style="border-left-color: var(--cyan); background: rgba(0,0,0,0.8); margin-top: 22px; font-size: 0.82em;">
+                            🎓 <strong>Analogía:</strong> Imagina que la IA es un estudiante que leyó <em>toda</em> la biblioteca del mundo. En una cuenta gratuita, cada pregunta que le haces queda anotada para que siga estudiando. En una cuenta <strong>Enterprise</strong>, esa anotación <strong>no existe</strong> — lo que dices desaparece al terminar la sesión.
+                        </div>
+                        <p style="font-size: 0.7em; color: #888; margin-top: 14px;">⬇ Mira el riesgo concreto</p>
+                    </div>
+                </section>
+
+                <!-- Sub-slide 4B-2: El Riesgo Real -->
+                <section data-background-image="assets/ai_brain_neural_1784010556674.png" data-background-opacity="0.15">
+                    <h2>⚠️ El Riesgo Real: <span class="danger-text">Cuenta Estándar vs Enterprise</span></h2>
+                    <p style="font-size: 0.82em; margin-bottom: 20px;">No es lo mismo usar la IA con una cuenta personal que con una corporativa. La diferencia es lo que le pasa a tus datos.</p>
+
+                    <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0; gap: 20px;">
+                        <div class="col fragment" style="background: rgba(255,77,77,0.06); border-color: #ff4d4d;">
+                            <h4 class="danger-text" style="font-size: 0.88em;">🔓 Cuenta Estándar / Gratuita</h4>
+                            <ul style="font-size: 0.8em;">
+                                <li>Tus conversaciones <strong>pueden ser revisadas</strong> por humanos para mejorar el modelo.</li>
+                                <li>El historial puede usarse como <strong>dato de entrenamiento</strong>.</li>
+                                <li>No hay garantía legal de privacidad corporativa.</li>
+                                <li style="color:#ff9999;">Si pegas código de un cliente hoy, ese patrón podría aparecer en respuestas de la IA a otros usuarios en el futuro.</li>
+                            </ul>
+                        </div>
+                        <div class="col fragment" style="background: rgba(77,255,145,0.05); border-color: #4dff91;">
+                            <h4 style="color:#4dff91; font-size: 0.88em;">🔒 Cuenta Enterprise</h4>
+                            <ul style="font-size: 0.8em;">
+                                <li>Garantía contractual de <strong>Zero Data Retention</strong>: tus datos no se almacenan.</li>
+                                <li><strong>Nunca</strong> se usan para entrenar modelos.</li>
+                                <li>Cumplimiento de normativas como <strong>ISO 27001, SOC 2, GDPR</strong>.</li>
+                                <li style="color:#4dff91;">Ideal para organizaciones que manejan información confidencial de clientes.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box fragment" style="border-left-color: #ffcc00; margin-top: 20px; font-size: 0.82em; text-align: center;">
+                        <strong class="highlight-text">Acción inmediata:</strong> Antes de usar cualquier herramienta de IA con datos del trabajo, verifica si la cuenta es Enterprise. Si no lo sabes con certeza, <strong>trátala como cuenta estándar</strong> y anonimiza todo lo que compartas.
+                    </div>
+                </section>
+
+                <!-- Sub-slide 4D: Tipos de IA que existen -->
+                <section data-background-image="assets/ai_brain_neural_1784010556674.png" data-background-opacity="0.15">
+                    <h2>Los <span class="highlight-text">3 Tipos de IA</span> que usamos hoy</h2>
+                    <p style="font-size: 0.8em; margin-bottom: 25px;">No toda IA es igual. Conocer la diferencia te hace más efectivo.</p>
+                    <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0; gap: 15px;">
+                        <div class="col fragment" style="background: rgba(100,255,218,0.05); border-color: var(--cyan); text-align: center;">
+                            <div style="font-size: 2.5em;">📝</div>
+                            <h4 style="color: var(--cyan);">IA Generativa</h4>
+                            <p style="font-size: 0.8em;">Genera texto, código e imágenes desde cero. <br><em>Ejemplos: Claude, Gemini, ChatGPT</em></p>
+                            <p style="font-size: 0.75em; color: #aaa;">→ Para redactar, explicar y resumir</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(100,255,218,0.05); border-color: var(--cyan); text-align: center;">
+                            <div style="font-size: 2.5em;">🔍</div>
+                            <h4 style="color: var(--cyan);">IA de Análisis</h4>
+                            <p style="font-size: 0.8em;">Detecta patrones en datos estructurados (logs, métricas). <br><em>Ejemplos: Google SecOps AI, Darktrace</em></p>
+                            <p style="font-size: 0.75em; color: #aaa;">→ Para monitoreo y detección de anomalías</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(100,255,218,0.05); border-color: var(--cyan); text-align: center;">
+                            <div style="font-size: 2.5em;">🤖</div>
+                            <h4 style="color: var(--cyan);">IA de Búsqueda</h4>
+                            <p style="font-size: 0.8em;">Responde preguntas con fuentes en tiempo real. <br><em>Ejemplos: Perplexity, Copilot + Bing</em></p>
+                            <p style="font-size: 0.75em; color: #aaa;">→ Para investigar CVEs y threat intel</p>
+                        </div>
+                    </div>
+                    <div class="box fragment" style="border-left-color: #ffcc00; margin-top: 20px; font-size: 0.85em;">
+                        <strong>Regla clave:</strong> Usa IA Generativa para redactar y comprender. Usa IA de Análisis (integrada dentro del SIEM con licencia) para monitorear. <strong>Nunca mezcles ambas sin un plan de seguridad.</strong>
+                    </div>
+                </section>
+
+            </section>
+
+            <!-- GRUPO: Ejemplos Prácticos de Uso de IA -->
+            <section>
+
+                <!-- Sub-slide: Elaboración de Documentos -->
+                <section>
+                    <h2>💡 IA en Acción: <span class="highlight-text">Documentación</span></h2>
+                    <p style="font-size: 0.82em; margin-bottom: 20px;">Cómo la IA puede acelerar la generación de documentos sin comprometer datos.</p>
+                    <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0; gap: 20px;">
+                        <div class="col" style="flex: 1.2;">
+                            <h4 style="color: white; font-size: 0.9em;">Casos de uso seguros ✅</h4>
+                            <ul style="font-size: 0.8em;">
+                                <li class="fragment"><strong>Informe de Incidente:</strong> "Genera la estructura de un informe de incidente para un ataque de ransomware. Incluye secciones: Resumen Ejecutivo, Cronología, Impacto, Lecciones Aprendidas."</li>
+                                <li class="fragment"><strong>Comunicado al cliente:</strong> "Redacta un correo formal para un CISO informando que el incidente fue contenido y que se tomarán medidas preventivas. Tono: profesional y tranquilizador."</li>
+                                <li class="fragment"><strong>Documentación técnica:</strong> "Explica en lenguaje sencillo (para no técnicos) qué es un ataque de fuerza bruta y cómo lo detectamos."</li>
+                            </ul>
+                        </div>
+                        <div class="col fragment" style="background: rgba(100,255,218,0.04); border-color: var(--cyan);">
+                            <h4 style="color: white; font-size: 0.9em;">💰 El Ahorro Real</h4>
+                            <p style="font-size: 0.8em; margin-bottom: 15px;">Un informe de incidente toma en promedio <strong>2-4 horas</strong> en redactarse.</p>
+                            <p style="font-size: 0.8em;">Con IA como asistente, puedes tener una estructura completa lista para revisar en <strong>menos de 5 minutos</strong>.</p>
+                            <p style="font-size: 0.8em; margin-top: 15px; color: var(--cyan);">→ El analista invierte su tiempo en <em>validar y personalizar</em>, no en formatear desde cero.</p>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Sub-slide: Productividad diaria -->
+                <section data-background-image="assets/soc_background_1784009958954.png" data-background-opacity="0.15">
+                    <h2>💡 IA en el Día a Día: <span class="highlight-text">Productividad</span></h2>
+                    <p style="font-size: 0.82em; margin-bottom: 20px;">Tareas pequeñas que consumen mucho tiempo y que la IA resuelve en segundos.</p>
+                    <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0; gap: 15px;">
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center;">
+                            <div style="font-size: 2em;">✉️</div>
+                            <h4 style="color: white; font-size: 0.85em;">Correos Profesionales</h4>
+                            <p style="font-size: 0.78em;">"Tengo que decirle a un cliente que el incidente se resolvió pero hubo un tiempo de inactividad. Redacta un correo profesional y empático."</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center;">
+                            <div style="font-size: 2em;">🔎</div>
+                            <h4 style="color: white; font-size: 0.85em;">Investigación de CVEs</h4>
+                            <p style="font-size: 0.78em;">"Explícame CVE-2024-XXXX en lenguaje sencillo: ¿qué hace el atacante, qué sistemas afecta y cuál es el parche?"</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center;">
+                            <div style="font-size: 2em;">📊</div>
+                            <h4 style="color: white; font-size: 0.85em;">Resúmenes de Reunión</h4>
+                            <p style="font-size: 0.78em;">"Aquí están mis notas de la reunión (sin nombres de clientes). Convierte esto en un acta formal con puntos de acción y responsables."</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center;">
+                            <div style="font-size: 2em;">📋</div>
+                            <h4 style="color: white; font-size: 0.85em;">Checklists de Auditoría</h4>
+                            <p style="font-size: 0.78em;">"Genera un checklist de verificación para cumplimiento de controles de acceso bajo ISO 27001, Sección A.9."</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sub-slide: Perfil Comercial -->
+                <section data-background-image="assets/soc_background_1784009958954.png" data-background-opacity="0.15">
+                    <h2>👔 Casos de Uso: <span class="highlight-text">Equipo Comercial y Cuentas</span></h2>
+                    <p style="font-size: 0.82em; margin-bottom: 20px;">Acelera el ciclo de ventas y mejora la comunicación con clientes potenciales.</p>
+                    <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0; gap: 15px;">
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center;">
+                            <div style="font-size: 2em;">📝</div>
+                            <h4 style="color: white; font-size: 0.85em;">Propuestas (RFP)</h4>
+                            <p style="font-size: 0.78em;">"Toma nuestros servicios estándar de Pentesting web y adapta la propuesta técnica para una empresa del sector financiero, destacando el cumplimiento PCI-DSS."</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center;">
+                            <div style="font-size: 2em;">🤝</div>
+                            <h4 style="color: white; font-size: 0.85em;">Preparación de Reuniones</h4>
+                            <p style="font-size: 0.78em;">"Dame un resumen de las principales preocupaciones de ciberseguridad para el sector salud en 2026 para prepararme para mi reunión con la Clínica XYZ."</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center;">
+                            <div style="font-size: 2em;">📧</div>
+                            <h4 style="color: white; font-size: 0.85em;">Seguimiento (Follow-up)</h4>
+                            <p style="font-size: 0.78em;">"Redacta un correo de seguimiento persuasivo pero no agresivo para el prospecto que vimos la semana pasada, ofreciendo una demostración gratuita de phishing."</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sub-slide: Perfil Riesgos y Compliance -->
+                <section data-background-image="assets/soc_background_1784009958954.png" data-background-opacity="0.15">
+                    <h2>📋 Casos de Uso: <span class="success-text">Riesgos y Compliance</span></h2>
+                    <p style="font-size: 0.82em; margin-bottom: 20px;">Agiliza la creación de políticas y el mapeo de normativas de seguridad.</p>
+                    <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0; gap: 15px;">
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center; border-bottom: 3px solid #4dff91;">
+                            <div style="font-size: 2em;">📜</div>
+                            <h4 style="color: white; font-size: 0.85em;">Creación de Políticas</h4>
+                            <p style="font-size: 0.78em;">"Genera un borrador de 'Política de Trabajo Remoto Seguro' basada en ISO 27001, incluyendo controles para VPN, uso de dispositivos personales y reporte de incidentes."</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center; border-bottom: 3px solid #4dff91;">
+                            <div style="font-size: 2em;">⚖️</div>
+                            <h4 style="color: white; font-size: 0.85em;">Mapeo Normativo</h4>
+                            <p style="font-size: 0.78em;">"Tengo este control interno de seguridad. ¿Con qué controles específicos del marco NIST CSF 2.0 y CIS Controls v8 se alinea? Dame una tabla comparativa."</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center; border-bottom: 3px solid #4dff91;">
+                            <div style="font-size: 2em;">🧐</div>
+                            <h4 style="color: white; font-size: 0.85em;">Revisión de Cláusulas</h4>
+                            <p style="font-size: 0.78em;">"Analiza esta cláusula de protección de datos de un contrato de proveedor (anónimo) y dime si cubre los requerimientos de notificación de brechas en 72 horas."</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sub-slide: Perfil PMO y Proyectos -->
+                <section data-background-image="assets/soc_background_1784009958954.png" data-background-opacity="0.15">
+                    <h2>⏱️ Casos de Uso: <span style="color:var(--gold);">Gestión de Proyectos (PMO)</span></h2>
+                    <p style="font-size: 0.82em; margin-bottom: 20px;">Mantén los proyectos de ciberseguridad a tiempo y bien comunicados.</p>
+                    <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0; gap: 15px;">
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center; border-bottom: 3px solid var(--gold);">
+                            <div style="font-size: 2em;">📅</div>
+                            <h4 style="color: white; font-size: 0.85em;">Cronogramas Base</h4>
+                            <p style="font-size: 0.78em;">"Crea un cronograma de alto nivel de 6 semanas para un proyecto de implementación de un EDR. Divide por fases: Kick-off, Despliegue, Tuning y Capacitación."</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center; border-bottom: 3px solid var(--gold);">
+                            <div style="font-size: 2em;">📊</div>
+                            <h4 style="color: white; font-size: 0.85em;">Informes de Estado</h4>
+                            <p style="font-size: 0.78em;">"Aquí tienes las actualizaciones técnicas del equipo de ingeniería. Tradúcelas a un resumen ejecutivo de estado de proyecto para presentar a la gerencia del cliente."</p>
+                        </div>
+                        <div class="col fragment" style="background: rgba(0,0,0,0.6); text-align: center; border-bottom: 3px solid var(--gold);">
+                            <div style="font-size: 2em;">⚠️</div>
+                            <h4 style="color: white; font-size: 0.85em;">Gestión de Riesgos</h4>
+                            <p style="font-size: 0.78em;">"Estamos atrasados en la entrega de credenciales por parte del cliente. Redacta un correo escalando el riesgo formalmente al sponsor del proyecto, de forma diplomática."</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Diapositiva 5 (antes 4): Eficiencia vs Riesgo -->
+            <section data-background-image="assets/ai_security_shield_1784009972936.png" data-background-opacity="0.25">
+                <div class="bg-overlay">
+                    <h2>La IA: <span class="success-text">Productividad</span> vs <span class="danger-text">Riesgo</span></h2>
+                    <div class="container" style="background: transparent; padding: 0; box-shadow: none; border: none;">
+                        <div class="col fragment" style="border-color: #4dff4d; background: rgba(0,0,0,0.6);">
+                            <h3 class="success-text">El Potencial (Eficiencia)</h3>
+                            <ul>
+                                <li><strong>Velocidad:</strong> Análisis de código y logs en segundos.</li>
+                                <li><strong>Redacción:</strong> Generación instantánea de bases para informes ejecutivos.</li>
+                                <li><strong>Creatividad:</strong> Lluvia de ideas para vectores de ataque en pentesting.</li>
+                            </ul>
+                        </div>
+                        <div class="col fragment" style="border-color: #ff4d4d; background: rgba(0,0,0,0.6);">
+                            <h3 class="danger-text">El Costo (Riesgos)</h3>
+                            <ul>
+                                <li><strong>Fuga de Datos:</strong> Exponer la arquitectura de un cliente en la nube.</li>
+                                <li><strong>Alucinaciones:</strong> La IA puede inventar falsos positivos y confundir al SOC.</li>
+                                <li><strong>Violación de Contratos:</strong> Incumplir acuerdos de confidencialidad (NDA).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diapositiva 5: Auditoría -->
+            <section>
+                <h2>El Radar: ¿Qué estamos utilizando hoy?</h2>
+                <p style="font-size: 0.85em;">El mercado está lleno de opciones. Actualmente en el radar tenemos:</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 1.1em; margin-top: 40px; margin-bottom: 40px;">
+                    <span class="fragment" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px; border: 1px solid var(--cyan);">🤖 Claude</span>
+                    <span class="fragment" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px; border: 1px solid var(--cyan);">✨ Gemini</span>
+                    <span class="fragment" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px; border: 1px solid var(--cyan);">🧠 ChatGPT</span>
+                    <span class="fragment" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px; border: 1px solid var(--cyan);">🔎 Perplexity</span>
+                    <span class="fragment" style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 10px; border: 1px solid var(--cyan);">💻 Copilot</span>
+                </div>
+                <div class="box fragment">
+                    <p class="highlight-text" style="font-size: 1.1em; margin-bottom: 10px;">Auditoría Abierta en el equipo:</p>
+                    <p style="font-size: 1.1em;"><em>¿Quién está usando otras herramientas (ej. Notion AI, Grammarly, NotebookLM)? ¿Para qué tareas específicas del día a día las aprovechan?</em></p>
+                </div>
+            </section>
+
+            <!-- Diapositiva 6: Riesgos Cuentas Gratuitas -->
+            <section>
+                <h2 class="danger-text">Anatomía del Riesgo: Cuentas Estándar</h2>
+                <div class="container" style="justify-content: center;">
+                    <div class="col" style="flex: 1; max-width: 900px;">
+                        <ul>
+                            <li class="fragment"><strong>Términos de Servicio:</strong> Las versiones gratuitas (y algunas Pro de pago personal) estipulan que <em>"tus datos pueden ser revisados por humanos y usados para entrenar nuestros modelos"</em>.</li>
+                            <li class="fragment"><strong>Retención de Datos:</strong> El historial queda almacenado en servidores de terceros, fuera de nuestro control de retención corporativo.</li>
+                            <li class="fragment"><strong>El Escenario de Pesadilla:</strong> Pegas una porción de código vulnerable de un cliente. Meses después, un atacante le pide a la IA: <em>"Muéstrame ejemplos reales de esta vulnerabilidad"</em>, y la IA escupe el código de nuestro cliente.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fragment box" style="border-left-color: #4dff4d; font-size: 0.9em; text-align: center; max-width: 900px; margin: 30px auto 0 auto;">
+                    <strong>El blindaje: Licenciamiento Enterprise.</strong> Garantiza por contrato la no-retención de datos (Zero Data Retention) y asegura que NO entrenan modelos con nuestra información confidencial.
+                </div>
+            </section>
+
+            <!-- Diapositiva 7: SIEM -->
+            <section data-background-image="assets/soc_background_1784009958954.png" data-background-opacity="0.15">
+                <h2>El Corazón del SOC: <span class="highlight-text">El SIEM</span></h2>
+                <div class="box" style="border-left-color: #ff4d4d; background: rgba(0,0,0,0.8); max-width: 900px; margin: 0 auto;">
+                    <p><strong>SIEM</strong> (Security Information and Event Management)</p>
+                    <p style="font-size: 1.1em;">Es nuestra herramienta principal donde se centralizan, correlacionan y analizan millones de logs (eventos de red, firewalls, antivirus, endpoints).</p>
+                </div>
+                <h4 class="fragment danger-text" style="margin-top: 30px; font-size: 1.5em;">🚨 REGLA DE ORO 🚨</h4>
+                <ul style="max-width: 900px; margin: 20px auto 0 auto;">
+                    <li class="fragment">Un log del SIEM contiene IP reales, nombres de host, usuarios y puertos. <strong>Es inteligencia pura de los clientes.</strong></li>
+                    <li class="fragment"><strong>NUNCA</strong> copies y pegues una alerta del SIEM directamente en Claude o ChatGPT para preguntarle <em>"¿Qué significa este error?"</em>.</li>
+                    <li class="fragment">Si necesitas ayuda de la IA pública, **anonimiza**: cambia la IP a "X.X.X.X", oculta el nombre del cliente y pega solo la sintaxis genérica del error.</li>
+                </ul>
+            </section>
+
+            <!-- Diapositiva 8: Mejores Prácticas -->
+            <section>
+                <h2>Tips y Prompts de Alta Eficiencia</h2>
+                <p style="font-size: 0.85em;">Cómo sacarle el jugo a la IA ahorrando tokens y tiempo.</p>
+                
+                <div class="container">
+                    <div class="col fragment">
+                        <h4 style="color: white;">Contexto Estricto (Menos Alucinación)</h4>
+                        <div class="prompt-code">
+                            "Actúa como analista SOC Nivel 3. Explica el mecanismo de persistencia del malware Emotet en Windows. Sé directo, técnico, usa viñetas y omite saludos o introducciones."
+                        </div>
+                    </div>
+                    <div class="col fragment">
+                        <h4 style="color: white;">Plantillas para Ahorrar Tiempo</h4>
+                        <div class="prompt-code">
+                            "Genera una estructura de correo en tono formal (con marcadores de posición [ ]) para informar al CISO sobre una brecha contenida exitosamente en el horario de madrugada."
+                        </div>
+                    </div>
+                </div>
+                <div class="box fragment" style="border-left-color: #4dff4d; max-width: 1000px; margin: 30px auto 0 auto;">
+                    💡 <strong>Tip de Tokens:</strong> En lugar de pasar historiales inmensos a la IA de pago (lo cual consume tokens costosos), pide resúmenes concisos. Por ejemplo: <em>"Resume los puntos clave técnicos de este hilo en 3 bullets"</em>.
+                </div>
+            </section>
+
+            <!-- Diapositiva 9: El Futuro (Agentes Locales) -->
+            <section data-background-image="assets/ai_security_shield_1784009972936.png" data-background-opacity="0.25">
+                <div class="bg-overlay">
+                    <h2>Alternativas Seguras: <span class="highlight-text">IA Local</span></h2>
+                    <p style="font-size: 0.85em;">No tenemos que depender de la nube para todo. Existe la IA que corre en tus propias máquinas (On-Premise).</p>
+                    
+                    <div class="container" style="background: transparent; box-shadow: none; border: none; padding: 0;">
+                        <div class="col fragment" style="border-color: var(--cyan); background: rgba(0,0,0,0.6);">
+                            <h4 style="color: white;">Ollama / LM Studio</h4>
+                            <p style="font-size: 0.9em;">Permiten descargar modelos robustos como Llama 3.1 o Qwen y ejecutarlos de manera offline sin internet.</p>
+                        </div>
+                        <div class="col fragment" style="border-color: var(--cyan); background: rgba(0,0,0,0.6);">
+                            <h4 style="color: white;">AnythingLLM / GPT4All</h4>
+                            <p style="font-size: 0.9em;">Interfaces amigables que permiten arrastrar PDFs o reportes y chatear con ellos 100% en local.</p>
+                        </div>
+                    </div>
+                    <div class="box fragment" style="background: rgba(0,0,0,0.8);">
+                        <strong>La Ventaja:</strong> Cero fuga de datos. Si necesitas analizar un log crudo del SIEM o un reporte de Nessus con vulnerabilidades, estas herramientas locales serán nuestro gran aliado.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diapositiva 10: Cierre y Resumen -->
+            <section data-transition="zoom">
+                <h2>Resumen: IA como nuestro Copiloto</h2>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; margin: 0 auto; max-width: 900px;">
+                    <ol>
+                        <li class="fragment"><strong>Automatiza lo aburrido:</strong> Usa la IA para estructurar, resumir y generar plantillas, guardando tu energía para el análisis complejo.</li>
+                        <li class="fragment"><strong>Desconfía por defecto (Zero Trust):</strong> Si la cuenta no es Enterprise, asume que todo lo que escribes es público.</li>
+                        <li class="fragment"><strong>El SIEM es sagrado:</strong> Filtra y anonimiza cualquier log crudo antes de interactuar con IA en la nube.</li>
+                        <li class="fragment"><strong>Trabajemos en equipo:</strong> Cuentan con mi apoyo para evaluar e implementar las mejores herramientas locales o comerciales para sus áreas.</li>
+                    </ol>
+                </div>
+                <br>
+                <h2 class="fragment highlight-text" style="font-size: 2.5em; margin-top: 40px;">¿Preguntas?</h2>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            width: 1280,      /* Formato estándar 720p 16:9 ideal para monitores y proyectores */
+            height: 720,
+            margin: 0.08,
+            minScale: 0.2,
+            maxScale: 1.5,
+            transition: 'slide'
+        });
+    </script>
+</body>
+</html>
